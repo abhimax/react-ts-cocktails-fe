@@ -33,11 +33,20 @@ const cocktailsSlice = createSlice({
       state.favorites.push(action.payload);
       console.log(" >>> state.favorites: ", state.favorites);
     },
+    removeFromFavorites: (state, action: PayloadAction<string>) => {
+      state.favorites = state.favorites.filter(
+        (cocktail) => cocktail.idDrink !== action.payload
+      );
+    },
   },
 });
 
-export const { setRandomCocktails, setSearchResults, addToFavorites } =
-  cocktailsSlice.actions;
+export const {
+  setRandomCocktails,
+  setSearchResults,
+  addToFavorites,
+  removeFromFavorites,
+} = cocktailsSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>; // Export RootState type correctly
 

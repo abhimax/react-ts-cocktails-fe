@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setRandomCocktails, setSearchResults, addToFavorites } from "./store";
+import {
+  setRandomCocktails,
+  setSearchResults,
+  addToFavorites,
+  removeFromFavorites,
+} from "./store";
 import { fetchRandomCocktails, searchCocktails } from "./services/cocktailApi";
 import { RootState } from "./store";
 import Cocktail from "./modules/Cocktail";
@@ -45,6 +50,10 @@ const Home: React.FC = () => {
     dispatch(addToFavorites(cocktail));
   };
 
+  const handleRemoveFromFavorites = (cocktailId: string) => {
+    dispatch(removeFromFavorites(cocktailId));
+  };
+
   return (
     <div>
       <h1>Home</h1>
@@ -61,6 +70,10 @@ const Home: React.FC = () => {
           key={cocktail.idDrink}
           cocktail={cocktail}
           onAddToFavorites={handleAddToFavorites}
+          isFavorite={favorites.some(
+            (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+          )}
+          onRemoveFromFavorites={handleRemoveFromFavorites}
         />
       ))}
       {searchResults.length > 0 && (
@@ -71,6 +84,10 @@ const Home: React.FC = () => {
               key={cocktail.idDrink}
               cocktail={cocktail}
               onAddToFavorites={handleAddToFavorites}
+              isFavorite={favorites.some(
+                (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+              )}
+              onRemoveFromFavorites={handleRemoveFromFavorites}
             />
           ))}
         </>
@@ -84,6 +101,8 @@ const Home: React.FC = () => {
               key={cocktail.idDrink}
               cocktail={cocktail}
               onAddToFavorites={handleAddToFavorites}
+              onRemoveFromFavorites={handleRemoveFromFavorites}
+              isFavorite={true}
             />
           ))}
         </div>
