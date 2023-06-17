@@ -19,3 +19,15 @@ export const fetchRandomCocktails = async (count: number) => {
     throw error;
   }
 };
+
+// Function to search for cocktails by name
+export const searchCocktails = async (query: string) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/search.php?s=${query}`);
+    return response.data.drinks;
+  } catch (error) {
+    // Handle error
+    console.error("Error searching cocktails:", error);
+    throw error;
+  }
+};
