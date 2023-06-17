@@ -10,13 +10,6 @@ import { fetchRandomCocktails, searchCocktails } from "./services/cocktailApi";
 import { RootState } from "./store";
 import Cocktail from "./modules/Cocktail";
 
-interface Cocktail {
-  idDrink: string;
-  strDrink: string;
-  strCategory: string;
-  strDrinkThumb: string;
-}
-
 const Home: React.FC = () => {
   const dispatch = useDispatch();
   const { randomCocktails, searchResults, favorites } = useSelector(
@@ -69,11 +62,6 @@ const Home: React.FC = () => {
         <Cocktail
           key={cocktail.idDrink}
           cocktail={cocktail}
-          onAddToFavorites={handleAddToFavorites}
-          isFavorite={favorites.some(
-            (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-          )}
-          onRemoveFromFavorites={handleRemoveFromFavorites}
           showButtons={false}
         />
       ))}

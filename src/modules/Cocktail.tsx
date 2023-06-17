@@ -1,17 +1,18 @@
 import { useDispatch } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../store";
 
+type Cocktail = {
+  idDrink: string;
+  strDrink: string;
+  strCategory: string;
+  strDrinkThumb: string;
+};
 interface CocktailProps {
-  cocktail: {
-    idDrink: string;
-    strDrink: string;
-    strCategory: string;
-    strDrinkThumb: string;
-  };
+  cocktail: Cocktail;
   showButtons: boolean;
-  isFavorite: boolean;
-  onAddToFavorites: (cocktail: any) => void;
-  onRemoveFromFavorites: (cocktailId: string) => void;
+  isFavorite?: boolean;
+  onAddToFavorites?: (cocktail: any) => void;
+  onRemoveFromFavorites?: (cocktailId: string) => void;
 }
 
 const Cocktail: React.FC<CocktailProps> = ({
