@@ -10,11 +10,13 @@ interface Cocktail {
 interface CocktailsState {
   randomCocktails: Cocktail[];
   searchResults: Cocktail[];
+  favorites: Cocktail[];
 }
 
 const initialState: CocktailsState = {
   randomCocktails: [],
   searchResults: [],
+  favorites: [],
 };
 
 const cocktailsSlice = createSlice({
@@ -27,10 +29,15 @@ const cocktailsSlice = createSlice({
     setSearchResults: (state, action: PayloadAction<Cocktail[]>) => {
       state.searchResults = action.payload;
     },
+    addToFavorites: (state, action: PayloadAction<Cocktail>) => {
+      state.favorites.push(action.payload);
+      console.log(" >>> state.favorites: ", state.favorites);
+    },
   },
 });
 
-export const { setRandomCocktails, setSearchResults } = cocktailsSlice.actions;
+export const { setRandomCocktails, setSearchResults, addToFavorites } =
+  cocktailsSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>; // Export RootState type correctly
 
