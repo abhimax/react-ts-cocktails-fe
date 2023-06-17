@@ -74,6 +74,7 @@ const Home: React.FC = () => {
             (favCocktail) => favCocktail.idDrink === cocktail.idDrink
           )}
           onRemoveFromFavorites={handleRemoveFromFavorites}
+          showButtons={false}
         />
       ))}
       {searchResults.length > 0 && (
@@ -88,6 +89,7 @@ const Home: React.FC = () => {
                 (favCocktail) => favCocktail.idDrink === cocktail.idDrink
               )}
               onRemoveFromFavorites={handleRemoveFromFavorites}
+              showButtons
             />
           ))}
         </>
@@ -103,6 +105,7 @@ const Home: React.FC = () => {
               onAddToFavorites={handleAddToFavorites}
               onRemoveFromFavorites={handleRemoveFromFavorites}
               isFavorite={true}
+              showButtons
             />
           ))}
         </div>

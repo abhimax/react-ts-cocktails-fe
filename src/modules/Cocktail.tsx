@@ -8,12 +8,17 @@ interface CocktailProps {
     strCategory: string;
     strDrinkThumb: string;
   };
+  showButtons: boolean;
+  isFavorite: boolean;
   onAddToFavorites: (cocktail: any) => void;
   onRemoveFromFavorites: (cocktailId: string) => void;
-  isFavorite: boolean;
 }
 
-const Cocktail: React.FC<CocktailProps> = ({ cocktail, isFavorite }) => {
+const Cocktail: React.FC<CocktailProps> = ({
+  cocktail,
+  isFavorite,
+  showButtons,
+}) => {
   const { idDrink, strDrink, strCategory, strDrinkThumb } = cocktail;
 
   const dispatch = useDispatch();
@@ -27,14 +32,18 @@ const Cocktail: React.FC<CocktailProps> = ({ cocktail, isFavorite }) => {
   };
 
   return (
-    <div className="cocktail">
+    <div>
       <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
       <h3>{cocktail.strDrink}</h3>
       <p>{cocktail.strCategory}</p>
-      {isFavorite ? (
-        <button onClick={handleRemoveFromFavorites}>Remove</button>
-      ) : (
-        <button onClick={handleAddToFavorites}>Add to Favorites</button>
+      {showButtons && (
+        <>
+          {isFavorite ? (
+            <button onClick={handleRemoveFromFavorites}>Remove</button>
+          ) : (
+            <button onClick={handleAddToFavorites}>Add to Favorites</button>
+          )}
+        </>
       )}
     </div>
   );
