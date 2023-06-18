@@ -3,11 +3,16 @@ import Cocktail from "../modules/Cocktail/Cocktail";
 import useCocktails from "../hooks/use-cocktails";
 
 const RandomItems: React.FC = () => {
-  const { randomCocktails, isLoading } = useCocktails();
+  const { randomCocktails, isLoading, fetchCocktails } = useCocktails();
+
+  const handleRefresh = () => {
+    fetchCocktails();
+  };
 
   return (
     <div>
       <h2>Random Items</h2>
+      <button onClick={handleRefresh}>Refresh</button>
       {isLoading ? (
         <p>Loading...</p>
       ) : (

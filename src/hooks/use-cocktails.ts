@@ -10,27 +10,24 @@ const useCocktails = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        setIsLoading(true);
-        const cocktails = await fetchRandomCocktails(5);
-        setRandomCocktails(cocktails);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        // Handle error
-      }
-    };
-
-    fetchCocktails();
-  }, []);
+  const fetchCocktails = async () => {
+    try {
+      setIsLoading(true);
+      const cocktails: CocktailType[] = await fetchRandomCocktails(5);
+      setRandomCocktails(cocktails);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      // Handle error
+    }
+  };
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
     if (storedFavorites) {
       setFavoritesLocal(JSON.parse(storedFavorites));
     }
+    fetchCocktails();
   }, []);
 
   const handleAddToFavorites = (cocktail: CocktailType) => {
@@ -60,6 +57,7 @@ const useCocktails = () => {
     randomCocktails,
     favorites,
     isLoading,
+    fetchCocktails,
     handleAddToFavorites,
     handleRemoveFromFavorites,
     handleSetFavorites,
