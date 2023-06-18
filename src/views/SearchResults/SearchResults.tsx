@@ -1,31 +1,29 @@
-import React from "react";
+import { useState, ChangeEvent, FC } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import Cocktail from "../modules/Cocktail/Cocktail";
-import useCocktailSearch from "../hooks/use-cocktail-search";
-import { CocktailType } from "../modules/Cocktail/types/CocktailType";
+import { RootState } from "../../store";
+import Cocktail from "../../modules/Cocktail/Cocktail";
+import useCocktailSearch from "../../hooks/use-cocktail-search";
+import { CocktailType } from "../../modules/Cocktail/types/CocktailType";
 import { Col, Row } from "react-grid-system";
-import { Loader } from "../components/Loader";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import SearchForm from "../modules/SearchForm/SearchForm";
+import { Loader } from "../../components/Loader";
+import SearchForm from "../../modules/SearchForm/SearchForm";
 
-const SearchResults: React.FC = () => {
+const SearchResults: FC = () => {
   const { searchResults, favorites } = useSelector(
     (state: RootState) => state.cocktails
   );
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
 
   const { searchTerm, setSearchTerm, isLoading, handleSearch } =
     useCocktailSearch();
 
-  const handleSearchInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   const handleSearchClick = () => {
     handleSearch();
+    setIsSearchClicked(true);
   };
 
   return (
@@ -42,18 +40,6 @@ const SearchResults: React.FC = () => {
             />
           </Col>
         </Row>
-        {/* <Row>
-          <Col>
-            <Input
-              type="text"
-              placeholder="Enter Cocktail Name"
-              value={searchTerm}
-              onChange={handleSearchInputChange}
-              label="Search Cocktails"
-            />
-            <Button label="Search" onClick={handleSearchClick} primary />
-          </Col>
-        </Row> */}
 
         {isLoading && (
           <Row>
@@ -63,7 +49,7 @@ const SearchResults: React.FC = () => {
           </Row>
         )}
 
-        {searchResults.length > 0 && (
+        {searchResults && isSearchClicked && searchResults.length > 0 ? (
           <Row>
             <Col>
               <Row>
@@ -88,7 +74,16 @@ const SearchResults: React.FC = () => {
               </Row>
             </Col>
           </Row>
-        )}
+        ) : isSearchClicked ? (
+          <Row>
+            <Col md={12}>
+              <h2 className="sub-header">Search Results</h2>
+            </Col>
+            <Col md={12}>
+              <p>No Matching Item Found</p>
+            </Col>
+          </Row>
+        ) : null}
       </Col>
     </Row>
   );

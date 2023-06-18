@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Cocktail from "../modules/Cocktail/Cocktail";
-import useCocktails from "../hooks/use-cocktails";
+import Cocktail from "../../modules/Cocktail/Cocktail";
+import useCocktails from "../../hooks/use-cocktails";
 import { Col, Row } from "react-grid-system";
 
 const Favorites: React.FC = () => {
@@ -23,26 +23,30 @@ const Favorites: React.FC = () => {
   };
 
   return (
-    <Row>
+    <Row className="favorites-view">
       <Col>
         <Row>
           <Col>
             <h2 className="sub-header">Favorites</h2>
           </Col>
         </Row>
-        <Row>
-          {favorites.map((cocktail) => (
-            <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
-              <Cocktail
-                key={cocktail.idDrink}
-                cocktail={cocktail}
-                showButtons={true}
-                isFavorite={true}
-                onRemoveFromFavorites={handleRemove}
-              />
-            </Col>
-          ))}
-        </Row>
+        {favorites.length > 0 ? (
+          <Row>
+            {favorites.map((cocktail) => (
+              <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
+                <Cocktail
+                  key={cocktail.idDrink}
+                  cocktail={cocktail}
+                  showButtons={true}
+                  isFavorite={true}
+                  onRemoveFromFavorites={handleRemove}
+                />
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <p>No Favorite Cocktails have been selected.</p>
+        )}
       </Col>
     </Row>
   );
