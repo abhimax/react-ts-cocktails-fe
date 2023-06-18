@@ -4,6 +4,7 @@ import { RootState } from "../store";
 import Cocktail from "../modules/Cocktail/Cocktail";
 import useCocktailSearch from "../hooks/use-cocktail-search";
 import { CocktailType } from "../modules/Cocktail/types/CocktailType";
+import { Col, Row } from "react-grid-system";
 
 const SearchResults: React.FC = () => {
   const { searchResults, favorites } = useSelector(
@@ -24,29 +25,47 @@ const SearchResults: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Search Results</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Search cocktails"
-          value={searchTerm}
-          onChange={handleSearchInputChange}
-        />
-        <button onClick={handleSearchClick}>Search</button>
-      </div>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        searchResults.map((cocktail: CocktailType) =>
-          !favorites.some(
-            (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-          ) ? (
-            <Cocktail key={cocktail.idDrink} cocktail={cocktail} showButtons />
-          ) : null
-        )
-      )}
-    </div>
+    <Row>
+      <Col>
+        <Row>
+          <Col>
+            <h2>Search Results</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <input
+              type="text"
+              placeholder="Search cocktails"
+              value={searchTerm}
+              onChange={handleSearchInputChange}
+            />
+            <button onClick={handleSearchClick}>Search</button>
+          </Col>
+        </Row>
+        <Row>
+          {isLoading ? (
+            <Col>
+              <p>Loading...</p>
+            </Col>
+          ) : (
+            searchResults.map((cocktail: CocktailType) =>
+              !favorites.some(
+                (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+              ) ? (
+                <Col key={cocktail.idDrink}>
+                  <Cocktail
+                    key={cocktail.idDrink}
+                    cocktail={cocktail}
+                    showButtons
+                  />
+                </Col>
+              ) : null
+            )
+          )}
+        </Row>
+      </Col>
+    </Row>
   );
 };
 

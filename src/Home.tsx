@@ -1,16 +1,23 @@
+import { FC } from "react";
 import RandomItems from "./views/RandomItems";
 import SearchResults from "./views/SearchResults";
 import Favorites from "./views/Favorites";
-import { FC } from "react";
+import { Container, Row, Col } from "react-grid-system";
 
 const Home: FC = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <Container>
+      <Row>
+        <Col>
+          <header>
+            <h1>The CocktailDB</h1>
+          </header>
+        </Col>
+      </Row>
       <RandomItems />
       <SearchResults />
       <Favorites />
-    </div>
+    </Container>
   );
 };
 

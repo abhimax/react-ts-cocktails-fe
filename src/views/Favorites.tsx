@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Cocktail from "../modules/Cocktail/Cocktail";
 import useCocktails from "../hooks/use-cocktails";
+import { Col, Row } from "react-grid-system";
 
 const Favorites: React.FC = () => {
   const { favorites, handleRemoveFromFavorites, handleSetFavorites } =
@@ -22,18 +23,28 @@ const Favorites: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Favorites</h2>
-      {favorites.map((cocktail) => (
-        <Cocktail
-          key={cocktail.idDrink}
-          cocktail={cocktail}
-          showButtons={true}
-          isFavorite={true}
-          onRemoveFromFavorites={handleRemove}
-        />
-      ))}
-    </div>
+    <Row>
+      <Col>
+        <Row>
+          <Col>
+            <h2>Favorites</h2>
+          </Col>
+        </Row>
+        <Row>
+          {favorites.map((cocktail) => (
+            <Col key={cocktail.idDrink}>
+              <Cocktail
+                key={cocktail.idDrink}
+                cocktail={cocktail}
+                showButtons={true}
+                isFavorite={true}
+                onRemoveFromFavorites={handleRemove}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Col>
+    </Row>
   );
 };
 
