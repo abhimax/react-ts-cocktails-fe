@@ -30,14 +30,20 @@ const cocktailsSlice = createSlice({
       state.searchResults = action.payload;
       console.log(" >>> state.searchResults: ", state.searchResults);
     },
-    addToFavorites: (state, action: PayloadAction<Cocktail>) => {
-      state.favorites.push(action.payload);
-      console.log(" >>> state.favorites: ", state.favorites);
+    addToFavorites: (state, action: PayloadAction<any>) => {
+      const cocktail = action.payload;
+      state.favorites.push(cocktail);
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
     removeFromFavorites: (state, action: PayloadAction<string>) => {
+      const cocktailId = action.payload;
       state.favorites = state.favorites.filter(
-        (cocktail) => cocktail.idDrink !== action.payload
+        (cocktail: any) => cocktail.idDrink !== cocktailId
       );
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+    },
+    setFavorites: (state, action: PayloadAction<any[]>) => {
+      state.favorites = action.payload;
     },
   },
 });
@@ -47,6 +53,7 @@ export const {
   setSearchResults,
   addToFavorites,
   removeFromFavorites,
+  setFavorites,
 } = cocktailsSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>; // Export RootState type correctly

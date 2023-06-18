@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, removeFromFavorites } from "../store";
+import { RootState, setFavorites, removeFromFavorites } from "../store";
 import Cocktail from "../modules/Cocktail";
 
 const Favorites: React.FC = () => {
@@ -8,6 +8,13 @@ const Favorites: React.FC = () => {
     (state: RootState) => state.cocktails.favorites
   );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      dispatch(setFavorites(JSON.parse(storedFavorites)));
+    }
+  }, [dispatch]);
 
   const handleRemoveFromFavorites = (cocktailId: string) => {
     dispatch(removeFromFavorites(cocktailId));
