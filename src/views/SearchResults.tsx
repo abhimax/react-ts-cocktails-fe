@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, setSearchResults } from "../store";
-import { addToFavorites } from "../store";
-import Cocktail from "../modules/Cocktail";
+import Cocktail from "../modules/Cocktail/Cocktail";
 import { searchCocktails } from "../services/cocktailApi";
+import useCocktails from "../hooks/use-cocktails";
+import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 
 const SearchResults: React.FC = () => {
   const { searchResults, favorites } = useSelector(
@@ -11,16 +12,18 @@ const SearchResults: React.FC = () => {
   );
 
   const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleAddToFavorites = (cocktail: any) => {
-    dispatch(addToFavorites(cocktail));
+  const { handleSetFavorites } = useCocktails();
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  const handleAddToFavorites = (cocktail: CocktailType) => {
+    const updatedFavorites = [...favorites, cocktail];
+    handleSetFavorites(updatedFavorites);
   };
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setSearchTerm(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleSearch = async () => {
@@ -44,7 +47,7 @@ const SearchResults: React.FC = () => {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-      {searchResults.map((cocktail) => (
+      {searchResults.map((cocktail: CocktailType) => (
         <Cocktail
           key={cocktail.idDrink}
           cocktail={cocktail}
@@ -60,4 +63,3 @@ const SearchResults: React.FC = () => {
 };
 
 export default SearchResults;
-export {};

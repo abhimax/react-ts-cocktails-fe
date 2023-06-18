@@ -1,23 +1,24 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, setFavorites, removeFromFavorites } from "../store";
-import Cocktail from "../modules/Cocktail";
+import Cocktail from "../modules/Cocktail/Cocktail";
+import useCocktails from "../hooks/use-cocktails";
 
 const Favorites: React.FC = () => {
-  const favorites = useSelector(
-    (state: RootState) => state.cocktails.favorites
-  );
-  const dispatch = useDispatch();
+  const { favorites, handleRemoveFromFavorites, handleSetFavorites } =
+    useCocktails();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
     if (storedFavorites) {
-      dispatch(setFavorites(JSON.parse(storedFavorites)));
+      handleSetFavorites(JSON.parse(storedFavorites));
     }
-  }, [dispatch]);
+  }, [handleSetFavorites]);
 
-  const handleRemoveFromFavorites = (cocktailId: string) => {
-    dispatch(removeFromFavorites(cocktailId));
+  const handleRemove = (cocktailId: string) => {
+    handleRemoveFromFavorites(cocktailId);
+    const updatedFavorites = favorites.filter(
+      (cocktail) => cocktail.idDrink !== cocktailId
+    );
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
   return (
@@ -29,7 +30,7 @@ const Favorites: React.FC = () => {
           cocktail={cocktail}
           showButtons={true}
           isFavorite={true}
-          onRemoveFromFavorites={handleRemoveFromFavorites}
+          onRemoveFromFavorites={handleRemove}
         />
       ))}
     </div>
@@ -37,4 +38,3 @@ const Favorites: React.FC = () => {
 };
 
 export default Favorites;
-export {};

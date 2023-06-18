@@ -1,22 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { fetchRandomCocktails } from "../services/cocktailApi";
-import Cocktail from "../modules/Cocktail";
+import React from "react";
+import Cocktail from "../modules/Cocktail/Cocktail";
+import useCocktails from "../hooks/use-cocktails";
 
 const RandomItems: React.FC = () => {
-  const [randomCocktails, setRandomCocktails] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        const cocktails = await fetchRandomCocktails(5);
-        setRandomCocktails(cocktails);
-      } catch (error) {
-        // Handle error
-      }
-    };
-
-    fetchCocktails();
-  }, []);
+  const { randomCocktails } = useCocktails();
 
   return (
     <div>
@@ -34,4 +21,3 @@ const RandomItems: React.FC = () => {
 };
 
 export default RandomItems;
-export {};

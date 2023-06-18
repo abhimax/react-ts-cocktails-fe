@@ -8,10 +8,11 @@ import {
 } from "./store";
 import { fetchRandomCocktails, searchCocktails } from "./services/cocktailApi";
 import { RootState } from "./store";
-import Cocktail from "./modules/Cocktail";
+import Cocktail from "./modules/Cocktail/Cocktail";
 import RandomItems from "./views/RandomItems";
 import SearchResults from "./views/SearchResults";
 import Favorites from "./views/Favorites";
+import { CocktailType } from "./modules/Cocktail/types/CocktailType";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleAddToFavorites = (cocktail: Cocktail) => {
+  const handleAddToFavorites = (cocktail: CocktailType) => {
     dispatch(addToFavorites(cocktail));
   };
 
