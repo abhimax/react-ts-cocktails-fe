@@ -9,6 +9,9 @@ import {
 import { fetchRandomCocktails, searchCocktails } from "./services/cocktailApi";
 import { RootState } from "./store";
 import Cocktail from "./modules/Cocktail";
+import RandomItems from "./views/RandomItems";
+import SearchResults from "./views/SearchResults";
+import Favorites from "./views/Favorites";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -50,54 +53,9 @@ const Home: React.FC = () => {
   return (
     <div>
       <h1>Home</h1>
-      <div>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
-      {randomCocktails.map((cocktail) => (
-        <Cocktail
-          key={cocktail.idDrink}
-          cocktail={cocktail}
-          showButtons={false}
-        />
-      ))}
-      {searchResults.length > 0 && (
-        <>
-          <h2>Search Results:</h2>
-          {searchResults.map((cocktail) => (
-            <Cocktail
-              key={cocktail.idDrink}
-              cocktail={cocktail}
-              onAddToFavorites={handleAddToFavorites}
-              isFavorite={favorites.some(
-                (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-              )}
-              onRemoveFromFavorites={handleRemoveFromFavorites}
-              showButtons
-            />
-          ))}
-        </>
-      )}
-
-      {favorites.length > 0 && (
-        <div className="favorites-container">
-          <h2>Favorites:</h2>
-          {favorites.map((cocktail) => (
-            <Cocktail
-              key={cocktail.idDrink}
-              cocktail={cocktail}
-              onAddToFavorites={handleAddToFavorites}
-              onRemoveFromFavorites={handleRemoveFromFavorites}
-              isFavorite={true}
-              showButtons
-            />
-          ))}
-        </div>
-      )}
+      <RandomItems />
+      <SearchResults />
+      <Favorites />
     </div>
   );
 };
