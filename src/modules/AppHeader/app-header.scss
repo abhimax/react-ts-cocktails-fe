@@ -1,0 +1,10 @@
+.app-header {
+    padding: 2rem 0 1rem 0;
+    border-bottom: solid var(--color-secondary) 1px;
+    margin-bottom: 1rem;
+
+    .main-heading {
+        font-size: var(--font-size-large);
+        color: var(--color-primary);
+    }
+}

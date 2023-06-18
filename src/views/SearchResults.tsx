@@ -30,7 +30,7 @@ const SearchResults: React.FC = () => {
       <Col>
         <Row>
           <Col>
-            <h2>Search Results</h2>
+            <h2 className="sub-header">Search Results</h2>
           </Col>
         </Row>
         <Row>
@@ -54,7 +54,7 @@ const SearchResults: React.FC = () => {
               !favorites.some(
                 (favCocktail) => favCocktail.idDrink === cocktail.idDrink
               ) ? (
-                <Col key={cocktail.idDrink}>
+                <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
                   <Cocktail
                     key={cocktail.idDrink}
                     cocktail={cocktail}

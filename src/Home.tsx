@@ -8,9 +8,9 @@ const Home: FC = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col className="app-header">
           <header>
-            <h1>The CocktailDB</h1>
+            <h1 className="main-heading">The CocktailDB</h1>
           </header>
         </Col>
       </Row>

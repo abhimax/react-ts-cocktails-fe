@@ -1,0 +1,32 @@
+.cocktail-tile {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-base);
+    margin: 0 8px 30px 8px;
+    flex: 1 0 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius-base) var(--border-radius-base) 0 0;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        margin: 0;
+        padding: 0 10px;
+        display: flex;
+    }
+
+    p {
+        margin: 6px 0;
+    }
+
+    .ui-button {
+        margin-bottom: 12px;
+    }
+}

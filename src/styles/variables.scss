@@ -2,10 +2,12 @@
     /* Colors */
     --black: #000000;
     --white: #ffffff;
+    --cascading-white: #f6f6f6;
     --silver-medal: #d6d6d6;
+    --kettleman: #626262;
+    --berie-black: #1C1C1C;
     --royal-orange: #fb7622;
     --Jokaero-orange: #e95b03;
-    --berie-black: #1C1C1C;
     --herbal: #24A787;
     --blue-eyed-boy: #1977C9;
     --urobilin: #DDAF23;
@@ -15,7 +17,11 @@
     /* Theme variables*/
     --color-primary: var(--royal-orange);
     --color-primary-dark-1: var(--Jokaero-orange);
-    --color-secondary: var(--berie-black);
+    --color-secondary-light-2: var(--cascading-white);
+    --color-secondary-light-1: var(--silver-medal);
+    --color-secondary: var(--kettleman);
+    --color-secondary-dark-1: var(--berie-black);
+
     --font-size-button: 1.25rem;
     --color-success: var(--herbal);
     --color-error: var(--rufous);
@@ -34,17 +40,16 @@
     --font-size-m-base: 1.125rem;
     /* 18px */
     --font-size-m-medium: 1.55rem;
-    /* 24.8px */
-    --font-size-medium: 1.938rem;
-    /* 31px */
-    --font-size-large: 2.438rem;
-    /* 39px */
+
+    --font-size-medium: 1.75rem;
+    --font-size-large: 2.5rem;
+
 
     --font-weight-base: 400;
     --font-weight-bold: 700;
 
     /*layouts*/
     --padding-base: 1rem;
-    --border-radius-base: 5px;
+    --border-radius-base: 4px;
 
 }

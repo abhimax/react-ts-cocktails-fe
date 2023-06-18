@@ -27,12 +27,12 @@ const Favorites: React.FC = () => {
       <Col>
         <Row>
           <Col>
-            <h2>Favorites</h2>
+            <h2 className="sub-header">Favorites</h2>
           </Col>
         </Row>
         <Row>
           {favorites.map((cocktail) => (
-            <Col key={cocktail.idDrink}>
+            <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
               <Cocktail
                 key={cocktail.idDrink}
                 cocktail={cocktail}

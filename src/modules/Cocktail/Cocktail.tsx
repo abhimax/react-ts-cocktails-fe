@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../../store";
 import { CocktailType } from "./types/CocktailType";
+import { Button } from "../../components/Button";
 
 interface CocktailProps {
   cocktail: CocktailType;
@@ -28,19 +29,30 @@ const Cocktail: React.FC<CocktailProps> = ({
   };
 
   return (
-    <div>
+    <div className="cocktail-tile" key={cocktail.idDrink}>
       <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
       <h3>{cocktail.strDrink}</h3>
       <p>{cocktail.strCategory}</p>
-      {showButtons && (
-        <>
-          {isFavorite ? (
-            <button onClick={handleRemoveFromFavorites}>Remove</button>
-          ) : (
-            <button onClick={handleAddToFavorites}>Add to Favorites</button>
-          )}
-        </>
-      )}
+      <div className="buttons">
+        {showButtons && (
+          <>
+            {isFavorite ? (
+              <Button
+                label="Remove"
+                onClick={handleRemoveFromFavorites}
+                size="small"
+              />
+            ) : (
+              <Button
+                label="Add to Favorites"
+                onClick={handleAddToFavorites}
+                size="small"
+                primary
+              />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

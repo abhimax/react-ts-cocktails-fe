@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-secondary-light-2);
+  color: var(--color-secondary-dark-1);
 }
 
 code {
@@ -23,7 +25,16 @@ p {
   margin-block-end: 0;
 }
 
-img {
-  width: 60px;
-  height: 60px;
+.sub-header {
+  font-size: var(--font-size-medium);
+  margin-bottom: 1rem;
+
+  &::after {
+    content: "";
+    background-color: var(--color-secondary-light-1);
+    width: 20vw;
+    height: 6px;
+    display: block;
+    margin: 2px 0 10px 0;
+  }
 }

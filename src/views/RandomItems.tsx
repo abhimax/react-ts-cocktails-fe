@@ -3,6 +3,7 @@ import Cocktail from "../modules/Cocktail/Cocktail";
 import useCocktails from "../hooks/use-cocktails";
 import { Col, Row } from "react-grid-system";
 import { Loader } from "../components/Loader";
+import { Button } from "../components/Button";
 
 const RandomItems: React.FC = () => {
   const { randomCocktails, isLoading, fetchCocktails } = useCocktails();
@@ -12,14 +13,12 @@ const RandomItems: React.FC = () => {
   };
 
   return (
-    <Row>
+    <Row justify="center">
       <Col>
-        <Row>
-          <Col>
-            <h2>Random Items</h2>
-            <button onClick={handleRefresh}>Refresh</button>
-          </Col>
-        </Row>
+        <div className="random-item-header">
+          <h2 className="sub-header">Random Items</h2>
+          <Button label="Refresh" primary onClick={handleRefresh} />
+        </div>
         <Row>
           {isLoading ? (
             <Col>
@@ -27,7 +26,7 @@ const RandomItems: React.FC = () => {
             </Col>
           ) : (
             randomCocktails.map((cocktail) => (
-              <Col key={cocktail.idDrink}>
+              <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
                 <Cocktail
                   key={cocktail.idDrink}
                   cocktail={cocktail}

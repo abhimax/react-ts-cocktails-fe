@@ -27,10 +27,10 @@
     }
 
     &.btn--secondary {
-        background-color: rgba(0, 0, 0, .4);
+        background-color: var(--color-secondary);
 
         &:hover {
-            background-color: rgba(0, 0, 0, .7)
+            background-color: var(--color-secondary-dark-1)
         }
     }
 
