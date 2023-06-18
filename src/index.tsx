@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./styles/main.scss";
 import Home from "./Home";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";

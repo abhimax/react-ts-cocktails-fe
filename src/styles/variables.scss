@@ -1,0 +1,50 @@
+:root {
+    /* Colors */
+    --black: #000000;
+    --white: #ffffff;
+    --silver-medal: #d6d6d6;
+    --royal-orange: #fb7622;
+    --Jokaero-orange: #e95b03;
+    --berie-black: #1C1C1C;
+    --herbal: #24A787;
+    --blue-eyed-boy: #1977C9;
+    --urobilin: #DDAF23;
+    --rufous: #A41D0C;
+
+
+    /* Theme variables*/
+    --color-primary: var(--royal-orange);
+    --color-primary-dark-1: var(--Jokaero-orange);
+    --color-secondary: var(--berie-black);
+    --font-size-button: 1.25rem;
+    --color-success: var(--herbal);
+    --color-error: var(--rufous);
+    --color-warning: var(--urobilin);
+    --color-info: var(--blue-eyed-boy);
+    --color-white: var(--white);
+    --color-black: var(--black);
+
+    /* Fonts*/
+    --font-size-x-small: 0.65rem;
+    /* 10.5px */
+    --font-size-small: 0.813rem;
+    /* 13px */
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-m-base: 1.125rem;
+    /* 18px */
+    --font-size-m-medium: 1.55rem;
+    /* 24.8px */
+    --font-size-medium: 1.938rem;
+    /* 31px */
+    --font-size-large: 2.438rem;
+    /* 39px */
+
+    --font-weight-base: 400;
+    --font-weight-bold: 700;
+
+    /*layouts*/
+    --padding-base: 1rem;
+    --border-radius-base: 5px;
+
+}
