@@ -1,0 +1,27 @@
+.search-form {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-base);
+    margin: 0 8px 30px 8px;
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+
+    .form-group {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+
+        .input-label {
+            font-size: var(--font-size-medium);
+            color: var(--color-primary);
+        }
+
+        .form-input {
+            margin: 1rem 0;
+        }
+    }
+}

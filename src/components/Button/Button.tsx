@@ -6,13 +6,19 @@ const Button: FC<IButtonProps> = ({
   size = "medium",
   label,
   disabled,
+  isStretched,
   ...props
 }) => {
   const mode = primary ? "btn--primary" : "btn--secondary";
   return (
     <button
       type="button"
-      className={["ui-button", `btn--${size}`, mode].join(" ")}
+      className={[
+        "ui-button",
+        `btn--${size}`,
+        `${isStretched ? "btn--full-width" : ""}`,
+        mode,
+      ].join(" ")}
       disabled={disabled}
       {...props}
     >

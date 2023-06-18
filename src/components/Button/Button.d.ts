@@ -3,6 +3,7 @@ interface IButtonProps {
   size?: "small" | "medium" | "large";
   label?: string;
   disabled?: boolean;
+  isStretched?: boolean;
   onClick?: () => void;
 }
 export { IButtonProps };

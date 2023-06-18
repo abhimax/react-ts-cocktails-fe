@@ -13,7 +13,7 @@ const RandomItems: React.FC = () => {
   };
 
   return (
-    <Row justify="center">
+    <Row>
       <Col>
         <div className="random-item-header">
           <h2 className="sub-header">Random Items</h2>
@@ -21,8 +21,8 @@ const RandomItems: React.FC = () => {
         </div>
         <Row>
           {isLoading ? (
-            <Col>
-              <Loader />
+            <Col className="loader-wrapper">
+              <Loader message="Loading 5 Random Cocktails..." />
             </Col>
           ) : (
             randomCocktails.map((cocktail) => (

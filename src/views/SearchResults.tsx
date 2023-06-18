@@ -6,6 +6,9 @@ import useCocktailSearch from "../hooks/use-cocktail-search";
 import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 import { Col, Row } from "react-grid-system";
 import { Loader } from "../components/Loader";
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+import SearchForm from "../modules/SearchForm/SearchForm";
 
 const SearchResults: React.FC = () => {
   const { searchResults, favorites } = useSelector(
@@ -29,42 +32,63 @@ const SearchResults: React.FC = () => {
     <Row>
       <Col>
         <Row>
-          <Col>
-            <h2 className="sub-header">Search Results</h2>
+          <Col md={6}>
+            <SearchForm
+              placeholder="Enter Cocktail Name"
+              searchTerm={searchTerm}
+              handleSearchInputChange={handleSearchInputChange}
+              label="Search Cocktails"
+              handleSearchClick={handleSearchClick}
+            />
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col>
-            <input
+            <Input
               type="text"
-              placeholder="Search cocktails"
+              placeholder="Enter Cocktail Name"
               value={searchTerm}
               onChange={handleSearchInputChange}
+              label="Search Cocktails"
             />
-            <button onClick={handleSearchClick}>Search</button>
+            <Button label="Search" onClick={handleSearchClick} primary />
           </Col>
-        </Row>
-        <Row>
-          {isLoading ? (
+        </Row> */}
+
+        {isLoading && (
+          <Row>
             <Col>
-              <Loader />
+              <Loader message="Search Cocktails..." />
             </Col>
-          ) : (
-            searchResults.map((cocktail: CocktailType) =>
-              !favorites.some(
-                (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-              ) ? (
-                <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
-                  <Cocktail
-                    key={cocktail.idDrink}
-                    cocktail={cocktail}
-                    showButtons
-                  />
+          </Row>
+        )}
+
+        {searchResults.length > 0 && (
+          <Row>
+            <Col>
+              <Row>
+                <Col>
+                  <h2 className="sub-header">Search Results</h2>
                 </Col>
-              ) : null
-            )
-          )}
-        </Row>
+              </Row>
+              <Row>
+                {searchResults.map((cocktail: CocktailType) =>
+                  !favorites.some(
+                    (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+                  ) ? (
+                    <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
+                      <Cocktail
+                        key={cocktail.idDrink}
+                        cocktail={cocktail}
+                        showButtons
+                      />
+                    </Col>
+                  ) : null
+                )}
+              </Row>
+            </Col>
+          </Row>
+        )}
       </Col>
     </Row>
   );

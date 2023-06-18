@@ -2,6 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+
+    .loader-message {
+        color: var(--color-primary-dark-1);
+        font-size: var(--font-size-base);
+    }
 }
 
 .loader-circle {
