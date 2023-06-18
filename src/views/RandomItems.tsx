@@ -2,6 +2,7 @@ import React from "react";
 import Cocktail from "../modules/Cocktail/Cocktail";
 import useCocktails from "../hooks/use-cocktails";
 import { Col, Row } from "react-grid-system";
+import { Loader } from "../components/Loader";
 
 const RandomItems: React.FC = () => {
   const { randomCocktails, isLoading, fetchCocktails } = useCocktails();
@@ -21,7 +22,9 @@ const RandomItems: React.FC = () => {
         </Row>
         <Row>
           {isLoading ? (
-            <p>Loading...</p>
+            <Col>
+              <Loader />
+            </Col>
           ) : (
             randomCocktails.map((cocktail) => (
               <Col key={cocktail.idDrink}>

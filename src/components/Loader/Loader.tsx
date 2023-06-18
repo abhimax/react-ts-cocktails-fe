@@ -4,7 +4,7 @@ interface LoaderProps {
   size?: string;
 }
 
-const Loader: FC<LoaderProps> = ({ size = "30px" }) => {
+const Loader: FC<LoaderProps> = ({ size = "75px" }) => {
   return (
     <div className="loader-container" style={{ width: size, height: size }}>
       <div

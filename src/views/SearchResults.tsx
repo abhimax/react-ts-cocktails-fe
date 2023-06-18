@@ -5,6 +5,7 @@ import Cocktail from "../modules/Cocktail/Cocktail";
 import useCocktailSearch from "../hooks/use-cocktail-search";
 import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 import { Col, Row } from "react-grid-system";
+import { Loader } from "../components/Loader";
 
 const SearchResults: React.FC = () => {
   const { searchResults, favorites } = useSelector(
@@ -46,7 +47,7 @@ const SearchResults: React.FC = () => {
         <Row>
           {isLoading ? (
             <Col>
-              <p>Loading...</p>
+              <Loader />
             </Col>
           ) : (
             searchResults.map((cocktail: CocktailType) =>
