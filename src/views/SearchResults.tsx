@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, setSearchResults } from "../store";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 import Cocktail from "../modules/Cocktail/Cocktail";
-import { searchCocktails } from "../services/cocktailApi";
-import useCocktails from "../hooks/use-cocktails";
+import useCocktailSearch from "../hooks/use-cocktail-search";
 import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 
 const SearchResults: React.FC = () => {
@@ -11,14 +10,8 @@ const SearchResults: React.FC = () => {
     (state: RootState) => state.cocktails
   );
 
-  const dispatch = useDispatch();
-  const { handleSetFavorites } = useCocktails();
-  const [searchTerm, setSearchTerm] = useState<string>("");
-
-  const handleAddToFavorites = (cocktail: CocktailType) => {
-    const updatedFavorites = [...favorites, cocktail];
-    handleSetFavorites(updatedFavorites);
-  };
+  const { searchTerm, setSearchTerm, isLoading, handleSearch } =
+    useCocktailSearch();
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -26,13 +19,8 @@ const SearchResults: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearch = async () => {
-    try {
-      const results = await searchCocktails(searchTerm);
-      dispatch(setSearchResults(results));
-    } catch (error) {
-      // Handle error
-    }
+  const handleSearchClick = () => {
+    handleSearch();
   };
 
   return (
@@ -45,20 +33,17 @@ const SearchResults: React.FC = () => {
           value={searchTerm}
           onChange={handleSearchInputChange}
         />
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearchClick}>Search</button>
       </div>
-      {searchResults.map((cocktail: CocktailType) =>
-        !favorites.some(
-          (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-        ) ? (
-          <Cocktail
-            key={cocktail.idDrink}
-            cocktail={cocktail}
-            showButtons={true}
-            onAddToFavorites={handleAddToFavorites}
-          />
-        ) : (
-          ""
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        searchResults.map((cocktail: CocktailType) =>
+          !favorites.some(
+            (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+          ) ? (
+            <Cocktail key={cocktail.idDrink} cocktail={cocktail} showButtons />
+          ) : null
         )
       )}
     </div>
