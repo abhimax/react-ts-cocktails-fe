@@ -7,14 +7,18 @@ import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 const useCocktails = () => {
   const [randomCocktails, setRandomCocktails] = useState<CocktailType[]>([]);
   const [favorites, setFavoritesLocal] = useState<CocktailType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchCocktails = async () => {
       try {
+        setIsLoading(true);
         const cocktails = await fetchRandomCocktails(5);
         setRandomCocktails(cocktails);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         // Handle error
       }
     };
@@ -43,7 +47,7 @@ const useCocktails = () => {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
-  const handleSetFavorites = (value: React.SetStateAction<CocktailType[]>) => {
+  const handleSetFavorites = (value: CocktailType[]) => {
     setFavoritesLocal(value);
     localStorage.setItem("favorites", JSON.stringify(value));
   };
@@ -55,6 +59,7 @@ const useCocktails = () => {
   return {
     randomCocktails,
     favorites,
+    isLoading,
     handleAddToFavorites,
     handleRemoveFromFavorites,
     handleSetFavorites,

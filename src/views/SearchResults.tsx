@@ -47,17 +47,20 @@ const SearchResults: React.FC = () => {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-      {searchResults.map((cocktail: CocktailType) => (
-        <Cocktail
-          key={cocktail.idDrink}
-          cocktail={cocktail}
-          showButtons={true}
-          isFavorite={favorites.some(
-            (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-          )}
-          onAddToFavorites={handleAddToFavorites}
-        />
-      ))}
+      {searchResults.map((cocktail: CocktailType) =>
+        !favorites.some(
+          (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+        ) ? (
+          <Cocktail
+            key={cocktail.idDrink}
+            cocktail={cocktail}
+            showButtons={true}
+            onAddToFavorites={handleAddToFavorites}
+          />
+        ) : (
+          ""
+        )
+      )}
     </div>
   );
 };
