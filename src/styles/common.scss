@@ -40,8 +40,19 @@ p {
   }
 }
 
-.loading-wrapper {
-  text-align: center;
 
-  p {}
+@media (max-width: 768px) {
+  .sub-header {
+    font-size: var(--font-size-m-medium);
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      background-color: var(--color-secondary-light-1);
+      width: 20vw;
+      height: 4px;
+      display: block;
+      margin: 2px 0 10px 0;
+    }
+  }
 }

@@ -53,3 +53,19 @@
         cursor: no-drop;
     }
 }
+
+@media (max-width: 768px) {
+    .ui-button {
+        &.btn--medium {
+            padding: 0.4rem 1rem;
+            height: 30px;
+            font-size: var(--font-size-small);
+        }
+
+        &.btn--large {
+            padding: 0.5rem 1.5rem;
+            height: 40px;
+            font-size: var(--font-size-base);
+        }
+    }
+}

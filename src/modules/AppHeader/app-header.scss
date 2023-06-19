@@ -8,3 +8,14 @@
         color: var(--color-primary);
     }
 }
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 1rem 0 0.5rem 0;
+        margin-bottom: 1rem;
+
+        .main-heading {
+            font-size: var(--font-size-medium);
+        }
+    }
+}
