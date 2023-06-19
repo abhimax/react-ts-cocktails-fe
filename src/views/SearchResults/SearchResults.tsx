@@ -14,7 +14,7 @@ const SearchResults: FC = () => {
   );
   const [isSearchClicked, setIsSearchClicked] = useState(false);
 
-  const { searchTerm, setSearchTerm, isLoading, handleSearch } =
+  const { searchTerm, setSearchTerm, isLoading, error, handleSearch } =
     useCocktailSearch();
 
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -49,41 +49,45 @@ const SearchResults: FC = () => {
           </Row>
         )}
 
-        {searchResults && isSearchClicked && searchResults.length > 0 ? (
-          <Row>
-            <Col>
-              <Row>
-                <Col>
-                  <h2 className="sub-header">Search Results</h2>
-                </Col>
-              </Row>
-              <Row>
-                {searchResults.map((cocktail: CocktailType) =>
-                  !favorites.some(
-                    (favCocktail) => favCocktail.idDrink === cocktail.idDrink
-                  ) ? (
-                    <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
-                      <Cocktail
-                        key={cocktail.idDrink}
-                        cocktail={cocktail}
-                        showButtons
-                      />
-                    </Col>
-                  ) : null
-                )}
-              </Row>
-            </Col>
-          </Row>
-        ) : isSearchClicked ? (
+        {error && isSearchClicked ? (
           <Row>
             <Col md={12}>
               <h2 className="sub-header">Search Results</h2>
             </Col>
             <Col md={12}>
-              <p>No Matching Item Found</p>
+              <p className="error-message">{error}</p>
             </Col>
           </Row>
-        ) : null}
+        ) : (
+          searchResults &&
+          isSearchClicked &&
+          searchResults.length > 0 && (
+            <Row>
+              <Col>
+                <Row>
+                  <Col>
+                    <h2 className="sub-header">Search Results</h2>
+                  </Col>
+                </Row>
+                <Row>
+                  {searchResults.map((cocktail: CocktailType) =>
+                    !favorites.some(
+                      (favCocktail) => favCocktail.idDrink === cocktail.idDrink
+                    ) ? (
+                      <Col xs={6} md={4} lg={3} xl={2} key={cocktail.idDrink}>
+                        <Cocktail
+                          key={cocktail.idDrink}
+                          cocktail={cocktail}
+                          showButtons
+                        />
+                      </Col>
+                    ) : null
+                  )}
+                </Row>
+              </Col>
+            </Row>
+          )
+        )}
       </Col>
     </Row>
   );

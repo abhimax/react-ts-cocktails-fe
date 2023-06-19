@@ -8,6 +8,7 @@ const useCocktailSearch = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setSearchResultsLocal] = useState<CocktailType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   const dispatch = useDispatch();
 
   const handleSearch = async () => {
@@ -18,7 +19,7 @@ const useCocktailSearch = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      // Handle error
+      setError("Error occurred while searching cocktails.");
     }
   };
 
@@ -31,6 +32,7 @@ const useCocktailSearch = () => {
     setSearchTerm,
     searchResults,
     isLoading,
+    error,
     handleSearch,
   };
 };
