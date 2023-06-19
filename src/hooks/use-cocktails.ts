@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchRandomCocktails } from "../services/cocktailApi";
-import { setFavorites } from "../store";
+import { setFavorites } from "../store/slices/cocktailsSlice";
 import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 
 const useCocktails = () => {

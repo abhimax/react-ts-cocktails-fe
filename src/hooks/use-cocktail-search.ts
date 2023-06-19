@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchResults } from "../store";
+import { setSearchResults } from "../store/slices/cocktailsSlice";
 import { searchCocktails } from "../services/cocktailApi";
 import { CocktailType } from "../modules/Cocktail/types/CocktailType";
 

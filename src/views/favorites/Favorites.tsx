@@ -4,8 +4,7 @@ import useCocktails from "../../hooks/use-cocktails";
 import { Col, Row } from "react-grid-system";
 
 const Favorites: React.FC = () => {
-  const { favorites, handleRemoveFromFavorites, handleSetFavorites } =
-    useCocktails();
+  const { favorites, handleSetFavorites } = useCocktails();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -13,14 +12,6 @@ const Favorites: React.FC = () => {
       handleSetFavorites(JSON.parse(storedFavorites));
     }
   }, [handleSetFavorites]);
-
-  const handleRemove = (cocktailId: string) => {
-    handleRemoveFromFavorites(cocktailId);
-    const updatedFavorites = favorites.filter(
-      (cocktail) => cocktail.idDrink !== cocktailId
-    );
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
 
   return (
     <Row className="favorites-view">
@@ -39,7 +30,6 @@ const Favorites: React.FC = () => {
                   cocktail={cocktail}
                   showButtons={true}
                   isFavorite={true}
-                  onRemoveFromFavorites={handleRemove}
                 />
               </Col>
             ))}
