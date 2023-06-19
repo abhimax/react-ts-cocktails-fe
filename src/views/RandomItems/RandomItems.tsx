@@ -6,7 +6,7 @@ import { Loader } from "../../components/Loader";
 import { Button } from "../../components/Button";
 
 const RandomItems: React.FC = () => {
-  const { randomCocktails, isLoading, fetchCocktails } = useCocktails();
+  const { randomCocktails, isLoading, error, fetchCocktails } = useCocktails();
 
   const handleRefresh = () => {
     fetchCocktails();
@@ -23,6 +23,10 @@ const RandomItems: React.FC = () => {
           {isLoading ? (
             <Col className="loader-wrapper">
               <Loader message="Loading 5 Random Cocktails..." />
+            </Col>
+          ) : error ? (
+            <Col>
+              <p className="error-message">{error}</p>
             </Col>
           ) : (
             randomCocktails.map((cocktail) => (

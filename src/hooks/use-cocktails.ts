@@ -8,6 +8,7 @@ const useCocktails = () => {
   const [randomCocktails, setRandomCocktails] = useState<CocktailType[]>([]);
   const [favorites, setFavoritesLocal] = useState<CocktailType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   const dispatch = useDispatch();
 
   const fetchCocktails = async () => {
@@ -18,7 +19,7 @@ const useCocktails = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      // Handle error
+      setError("Failed to fetch cocktails. Please try again later.");
     }
   };
 
@@ -57,6 +58,7 @@ const useCocktails = () => {
     randomCocktails,
     favorites,
     isLoading,
+    error,
     fetchCocktails,
     handleAddToFavorites,
     handleRemoveFromFavorites,

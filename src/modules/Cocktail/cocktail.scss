@@ -26,9 +26,16 @@
         margin: 6px 0;
     }
 
-    .ui-button {
-        margin-bottom: 15px;
+    .buttons {
+        width: 100%;
+
+        .ui-button {
+            width: 90%;
+            margin: 5%;
+            justify-content: center;
+        }
     }
+
 }
 
 @media (max-width: 1600px) {
@@ -84,7 +91,7 @@
             width: 100%;
 
             .ui-button {
-                margin-bottom: 0;
+                margin: 0;
                 width: 100%;
                 justify-content: center;
                 border-radius: 0 0 var(--border-radius-base) var(--border-radius-base);

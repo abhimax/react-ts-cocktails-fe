@@ -40,6 +40,11 @@ p {
   }
 }
 
+.error-message {
+  color: var(--color-error);
+  margin: 1rem 0;
+}
+
 
 @media (max-width: 768px) {
   .sub-header {
