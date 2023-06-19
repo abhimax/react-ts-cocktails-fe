@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 describe("Loader component", () => {
   it("renders the loader with the provided message and size", () => {

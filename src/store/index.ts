@@ -28,7 +28,6 @@ const cocktailsSlice = createSlice({
     },
     setSearchResults: (state, action: PayloadAction<Cocktail[]>) => {
       state.searchResults = action.payload;
-      console.log(" >>> state.searchResults: ", state.searchResults);
     },
     addToFavorites: (state, action: PayloadAction<any>) => {
       const cocktail = action.payload;
