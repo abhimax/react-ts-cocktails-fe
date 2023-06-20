@@ -1,11 +1,10 @@
 import { FC } from "react";
+import { ILoaderProps } from "./Loader.d";
 
-interface LoaderProps {
-  size?: string;
-  message?: string;
-}
-
-const Loader: FC<LoaderProps> = ({ size = "70px", message = "Loading..." }) => {
+const Loader: FC<ILoaderProps> = ({
+  size = "70px",
+  message = "Loading...",
+}) => {
   return (
     <div className="loader-container">
       <div

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { SearchFormProps } from "./SearchForm.d";
+import { ISearchFormProps } from "./SearchForm.d";
 
-const SearchForm: FC<SearchFormProps> = ({
+const SearchForm: FC<ISearchFormProps> = ({
   searchTerm,
   placeholder,
   label,

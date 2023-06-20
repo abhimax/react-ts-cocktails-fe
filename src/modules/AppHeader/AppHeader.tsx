@@ -1,11 +1,8 @@
 import { FC } from "react";
 import { Col, Row } from "react-grid-system";
+import { IAppHeaderProps } from "./AppHeader.d";
 
-interface AppHeaderProps {
-  heading: string;
-}
-
-const AppHeader: FC<AppHeaderProps> = ({ heading }) => {
+const AppHeader: FC<IAppHeaderProps> = ({ heading }) => {
   return (
     <Row>
       <Col className="app-header">

@@ -3,16 +3,10 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from "../../store/slices/cocktailsSlice";
-import { CocktailType } from "./types/CocktailType";
 import { Button } from "../../components/Button";
+import { ICocktailProps } from "./Cocktail.d";
 
-interface CocktailProps {
-  cocktail: CocktailType;
-  showButtons: boolean;
-  isFavorite?: boolean;
-}
-
-const Cocktail: React.FC<CocktailProps> = ({
+const Cocktail: React.FC<ICocktailProps> = ({
   cocktail,
   isFavorite,
   showButtons,

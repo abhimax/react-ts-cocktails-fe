@@ -1,14 +1,14 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SearchForm from "../SearchForm";
-import { SearchFormProps } from "../SearchForm.d";
+import { ISearchFormProps } from "../SearchForm.d";
 
 describe("SearchForm component", () => {
   const mockHandleSearchInputChange = jest.fn();
   const mockHandleSearchClick = jest.fn();
 
-  const renderComponent = (props: Partial<SearchFormProps> = {}) => {
-    const defaultProps: SearchFormProps = {
+  const renderComponent = (props: Partial<ISearchFormProps> = {}) => {
+    const defaultProps: ISearchFormProps = {
       searchTerm: "",
       handleSearchInputChange: mockHandleSearchInputChange,
       handleSearchClick: mockHandleSearchClick,
