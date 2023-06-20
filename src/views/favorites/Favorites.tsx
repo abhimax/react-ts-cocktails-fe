@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import { FC, useEffect } from "react";
 import Cocktail from "../../modules/Cocktail/Cocktail";
 import useCocktails from "../../hooks/use-cocktails";
 import { Col, Row } from "react-grid-system";
 
-const Favorites: React.FC = () => {
+const Favorites: FC = () => {
   const { favorites, handleSetFavorites } = useCocktails();
 
   useEffect(() => {

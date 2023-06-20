@@ -1,11 +1,11 @@
-import React from "react";
+import { FC } from "react";
 import Cocktail from "../../modules/Cocktail/Cocktail";
 import useCocktails from "../../hooks/use-cocktails";
 import { Col, Row } from "react-grid-system";
 import { Loader } from "../../components/Loader";
 import { Button } from "../../components/Button";
 
-const RandomItems: React.FC = () => {
+const RandomItems: FC = () => {
   const { randomCocktails, isLoading, error, fetchCocktails } = useCocktails();
 
   const handleRefresh = () => {
