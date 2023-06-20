@@ -1,4 +1,41 @@
-# Getting Started with Create React App
+# The CocktailDB ( React, TypeScript Web App)
+
+## Front-end Code Challenge
+
+#### Code Task
+
+Please use the provided React/React Native application to further enhance the application with following features.
+
+#### Data
+
+https://www.thecocktaildb.com/
+please use cocktail api from this site, you don't need to pay any fee to access these api
+
+### Features
+
+- ##### Feature 1 - Home
+  When user arrives on home page, user can view 5 random cocktails on home page
+  Every cocktail will contain cocktail name, cocktail image, category
+  User can click a "Refresh" button on this page to get another 5 random cocktails
+- ##### Feature 2 - Search
+  User can search for a cocktail and add it to favourites list
+  The search result will contains cocktail name, cocktail image and "Add" button
+  Press "Add" button will add the cocktail to Favourites list
+- ##### Feature 3 - Favourites
+  User will see a list of favourites cocktails
+  User will see cocktail name, cocktail image and "Remove" button
+  User can remove a cocktail from favourites list
+
+### Unit tests
+
+Please include unit tests for the new features
+
+### Bonus
+
+- Responsive web application
+- Add any additional feature which gives better user experience
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
