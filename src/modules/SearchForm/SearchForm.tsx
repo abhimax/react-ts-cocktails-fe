@@ -1,16 +1,9 @@
-import { FC, ChangeEvent } from "react";
+import { FC } from "react";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { SearchFormProps } from "./SearchForm.d";
 
-interface SearchFormProps {
-  searchTerm: string;
-  placeholder?: string;
-  label?: string;
-  handleSearchInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleSearchClick: () => void;
-}
-
-const SearchForm: React.FC<SearchFormProps> = ({
+const SearchForm: FC<SearchFormProps> = ({
   searchTerm,
   placeholder,
   label,
