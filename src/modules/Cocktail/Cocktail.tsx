@@ -5,8 +5,9 @@ import {
 } from "../../store/slices/cocktailsSlice";
 import { Button } from "../../components/Button";
 import { ICocktailProps } from "./Cocktail.d";
+import { FC } from "react";
 
-const Cocktail: React.FC<ICocktailProps> = ({
+const Cocktail: FC<ICocktailProps> = ({
   cocktail,
   isFavorite,
   showButtons,
@@ -22,7 +23,10 @@ const Cocktail: React.FC<ICocktailProps> = ({
   };
 
   return (
-    <div className="cocktail-tile" key={cocktail.idDrink}>
+    <div
+      className={`${showButtons ? "cocktail-tile" : "cocktail-tile no-action"}`}
+      key={cocktail.idDrink}
+    >
       <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
       <h3>{cocktail.strDrink}</h3>
       <p>{cocktail.strCategory}</p>
@@ -36,7 +40,7 @@ const Cocktail: React.FC<ICocktailProps> = ({
             />
           ) : (
             <Button
-              label="Add to Favorites"
+              label="Add"
               onClick={handleAddToFavorites}
               size="small"
               primary

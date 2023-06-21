@@ -1,5 +1,15 @@
 # The CocktailDB ( React, TypeScript Web App)
 
+### [ click here ](https://abhimax.github.io/react-ts-cocktails-fe/) to view the app
+
+##### Home view
+
+![COKTAIL!](readme-res/cocktail-db-home.png)
+
+##### Search result and favourite list view
+
+![COKTAIL-s!](readme-res/cocktail-db-serch-fav.png)
+
 ## Front-end Code Challenge
 
 #### Code Task

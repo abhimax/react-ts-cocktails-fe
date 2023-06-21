@@ -9,6 +9,10 @@
     text-align: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
 
+    &.no-action {
+        height: calc(100% - 15px);
+    }
+
     img {
         width: 100%;
         height: auto;
@@ -42,11 +46,11 @@
     .cocktail-tile {
 
         h3 {
-            font-size: var(--font-size-m-bas);
+            font-size: var(--font-size-m-base);
         }
 
         p {
-            font-size: var(--font-size-base);
+            font-size: var(--font-size-m-base);
         }
     }
 }
