@@ -2,6 +2,7 @@
   "name": "react-ts-cocktails-fe",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://abhimax.github.io/react-ts-cocktails-fe",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
