@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "react-scanner": "^1.2.0"
   }
 }
